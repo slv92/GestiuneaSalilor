@@ -33,6 +33,14 @@ namespace GestiuneaSalilor
             inn.Show();
         }
 
+        private void Orar_Click(object sender, EventArgs e)
+        {
+            OrarMainForm form = new OrarMainForm();
+            form.Show();
+
+
+        }
+
 
 
 

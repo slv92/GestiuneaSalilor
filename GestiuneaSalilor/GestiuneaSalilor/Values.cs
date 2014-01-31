@@ -6,9 +6,20 @@ using System.Threading.Tasks;
 
 namespace GestiuneaSalilor
 {
-    class Values
+    class Sali
     {
-    
+        public int ID_Sala { get; set; }
+
+        public void setID_SALA(int x)
+        {
+            ID_Sala = x;
+        }
+
+        public int getID_SALA()
+        {
+            return ID_Sala;
+        }
+   
     }
 
     class Users
