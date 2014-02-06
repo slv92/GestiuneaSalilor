@@ -53,11 +53,10 @@
             this.label1.Size = new System.Drawing.Size(260, 25);
             this.label1.TabIndex = 4;
             this.label1.Text = "Gestiunea salilor de clasa";
-//            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(115, 129);
+            this.button2.Location = new System.Drawing.Point(110, 130);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(117, 24);
             this.button2.TabIndex = 6;

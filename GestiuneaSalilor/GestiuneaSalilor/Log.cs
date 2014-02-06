@@ -30,7 +30,7 @@ namespace GestiuneaSalilor
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            Program.LOG.ID = 0;
             ClassRoom c = new ClassRoom();
             c.Show();
 
@@ -47,6 +47,10 @@ namespace GestiuneaSalilor
             sg.Show();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+          
+        }
        
         
 

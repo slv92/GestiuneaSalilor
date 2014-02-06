@@ -19,6 +19,8 @@ namespace GestiuneaSalilor
         }
 
         Users us = new Users();
+        SaliValues sv = new SaliValues();
+        Inventory2 inv = new Inventory2();
 
         public string EncryptPassword(string txtPassword)
         {
@@ -39,6 +41,22 @@ namespace GestiuneaSalilor
 
         }
 
+        public SaliValues SetSaliVal(int i, string a, string b)
+        {
+            sv.setID_SALA(i);
+            sv.setNumeS(a);
+            sv.setResp(b);
+            return sv;
+        }
+
+        public Inventory2 SetInventory(int a, int b, int c, int d)
+        {
+            inv.setIDS(a);
+            inv.setScaune(b);
+            inv.setMese(c);
+            inv.setCalc(d);
+            return inv;
+        }
       
 
         public bool InsertUser()
@@ -46,7 +64,7 @@ namespace GestiuneaSalilor
             Connection db = new Connection();
 
 
-            string sqlQuery = "INSERT INTO User ";
+            string sqlQuery = "INSERT INTO Users ";
             sqlQuery += "(ID_U, Username, Password) ";
             sqlQuery += "VALUES ";
             sqlQuery += "(@ID_U, @Username, @Password)";
@@ -62,8 +80,36 @@ namespace GestiuneaSalilor
             return db.InsertUpdateDelete(sqlQuery, parameters, false);
         }
 
+        public bool InsertSala()
+        {
+            Connection db = new Connection();
+
+            Dictionary<string, string> parameters2 = new Dictionary<string, string>();
+            parameters2.Add("@ID_S", sv.getID_SALA().ToString());
+            parameters2.Add("@Nume_Sala", sv.getNumeS());
+            parameters2.Add("@Responsabil", sv.getResp());
 
 
+            return db.InsertUpdateDelete("InsertS", parameters2, true);
+
+
+        }
+
+        public bool InsertInventar()
+        {
+            Connection db = new Connection();
+
+            Dictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add("@ID_S", inv.getID().ToString());
+            parameters.Add("@Numar_Scaune", inv.getScaune().ToString());
+            parameters.Add("@Numar_Mese", inv.getMese().ToString());
+            parameters.Add("@Numar_calculatoare", inv.getCalc().ToString());
+
+
+            return db.InsertUpdateDelete("InsertInventar", parameters, true);
+
+
+        }
 
         public DataTable SelectU()
         {

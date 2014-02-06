@@ -66,6 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddClassRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddClassRoom.Designer.cs">
+      <DependentUpon>AddClassRoom.cs</DependentUpon>
+    </Compile>
     <Compile Include="BusinessLayerClass.cs" />
     <Compile Include="ClassRoom.cs">
       <SubType>Form</SubType>
@@ -102,6 +108,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="NewAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewAccount.Designer.cs">
+      <DependentUpon>NewAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="OrarMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +139,9 @@
       <DependentUpon>SignIn.cs</DependentUpon>
     </Compile>
     <Compile Include="Values.cs" />
+    <EmbeddedResource Include="AddClassRoom.resx">
+      <DependentUpon>AddClassRoom.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClassRoom.resx">
       <DependentUpon>ClassRoom.cs</DependentUpon>
     </EmbeddedResource>
@@ -135,6 +150,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Log.resx">
       <DependentUpon>Log.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewAccount.resx">
+      <DependentUpon>NewAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OrarMainForm.resx">
       <DependentUpon>OrarMainForm.cs</DependentUpon>

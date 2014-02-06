@@ -10,6 +10,13 @@ namespace GestiuneaSalilor
 {
     static class Program
     {
+
+        public class LOG
+        {
+
+            public static string Usr;
+            public static int ID;
+        }
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

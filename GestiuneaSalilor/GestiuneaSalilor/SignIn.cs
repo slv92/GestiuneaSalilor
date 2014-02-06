@@ -36,10 +36,13 @@ namespace GestiuneaSalilor
                 if (blc.DecryptPassword(pass) == textBox2.Text)
                 {
 
-
+                    Program.LOG.Usr = textBox1.Text;
+                    Program.LOG.ID = blc.ReturnIdU(textBox1.Text);
 
                     ClassRoom frm = new ClassRoom();
                     frm.Show();
+
+                   
 
                 }
 
@@ -57,8 +60,7 @@ namespace GestiuneaSalilor
 
         }
 
-
-
+       
 
         
     }
