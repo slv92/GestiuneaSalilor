@@ -115,6 +115,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SaliDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SaliDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SaliDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SignIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +189,17 @@
     <None Include="SaliDataSet.xss">
       <DependentUpon>SaliDataSet.xsd</DependentUpon>
     </None>
+    <None Include="SaliDataSet1.xsc">
+      <DependentUpon>SaliDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="SaliDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SaliDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SaliDataSet1.xss">
+      <DependentUpon>SaliDataSet1.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -192,8 +208,12 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database1.sdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Include="Sali.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sali_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Sali.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>
