@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestiuneaSalilor
 {
-    class Sali
+    class SaliValues
     {
         public int ID_Sala { get; set; }
 

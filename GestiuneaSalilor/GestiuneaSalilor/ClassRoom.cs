@@ -37,7 +37,11 @@ namespace GestiuneaSalilor
         {
             OrarMainForm form = new OrarMainForm();
             form.Show();
-
+            int i=0;
+            string s = null;
+            s = dataGridView1[dataGridView1.CurrentCell.ColumnIndex, dataGridView1.CurrentCell.RowIndex].Value.ToString();
+            i = Convert.ToInt32(s);
+            bls.setSalaID(i);
 
         }
 

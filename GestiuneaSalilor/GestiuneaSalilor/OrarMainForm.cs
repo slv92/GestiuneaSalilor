@@ -17,7 +17,7 @@ namespace GestiuneaSalilor
         public OrarMainForm()
         {
             InitializeComponent();
-            afisare_orar();
+           // afisare_orar();
         }
     }
 }

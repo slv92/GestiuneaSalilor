@@ -17,7 +17,7 @@ namespace GestiuneaSalilor
 
         public DataLayerClass dlc = new DataLayerClass();
         Users us = new Users();
-        Sali sa = new Sali();
+        SaliValues sal = new SaliValues();
 
 
         public string DecryptPassword(string encryptedPassword)
@@ -34,6 +34,11 @@ namespace GestiuneaSalilor
             return us;
         }
 
+        public void setSalaID(int i)
+        {
+            sal.setID_SALA(i);
+
+        }
 
         public bool InsertUs()
         {
