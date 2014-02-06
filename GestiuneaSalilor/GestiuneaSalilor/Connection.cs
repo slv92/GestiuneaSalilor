@@ -12,11 +12,6 @@ namespace GestiuneaSalilor
 {
     class Connection
     {
-
-
-        
-        
-
             string connectionString = "Data Source=(local) ;Initial Catalog=Sali ;Integrated Security=SSPI";
         
 
@@ -60,7 +55,7 @@ namespace GestiuneaSalilor
         }
 
        
-        // Insert Query
+        // Insert/Update/Delete Query
       
         public bool InsertUpdateDelete(string sql, Dictionary<string, string> parameters, bool isProcedure)
         {

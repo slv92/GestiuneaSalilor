@@ -16,6 +16,7 @@ namespace GestiuneaSalilor
         {
             InitializeComponent();
         }
+        // returnez username-ul introdus
         public string getU()
         {
             return textBox1.Text.ToString();
@@ -23,11 +24,13 @@ namespace GestiuneaSalilor
 
         }
 
+        // returnez parola 
         public string getP()
         {
             return textBox2.Text.ToString();
         }
 
+        //returnez parola confirmata
         public string getCP()
         {
             return textBox3.Text.ToString();
@@ -67,5 +70,7 @@ namespace GestiuneaSalilor
         {
 
         }
+
+        
     }
 }

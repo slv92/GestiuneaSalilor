@@ -30,7 +30,7 @@ namespace GestiuneaSalilor
         }
 
 
-
+        // salveaza informatii despre un user
         public Users SetUser(int i, string a, string b)
         {
             us.setID(i);
@@ -41,24 +41,7 @@ namespace GestiuneaSalilor
 
         }
 
-        public SaliValues SetSaliVal(int i, string a, string b)
-        {
-            sv.setID_SALA(i);
-            sv.setNumeS(a);
-            sv.setResp(b);
-            return sv;
-        }
-
-        public Inventory2 SetInventory(int a, int b, int c, int d)
-        {
-            inv.setIDS(a);
-            inv.setScaune(b);
-            inv.setMese(c);
-            inv.setCalc(d);
-            return inv;
-        }
-      
-
+        // insereaza un user
         public bool InsertUser()
         {
             Connection db = new Connection();
@@ -80,6 +63,30 @@ namespace GestiuneaSalilor
             return db.InsertUpdateDelete(sqlQuery, parameters, false);
         }
 
+        // selectez toti utilizatorii
+        public DataTable SelectU()
+        {
+
+            Connection db = new Connection();
+
+
+
+            string sqlQuery = "SELECT * FROM Users ";
+
+            return db.Select(sqlQuery, false);
+
+        }
+
+        // salvez informatii despre o sala
+        public SaliValues SetSaliVal(int i, string a, string b)
+        {
+            sv.setID_SALA(i);
+            sv.setNumeS(a);
+            sv.setResp(b);
+            return sv;
+        }
+
+        //inserez o sala
         public bool InsertSala()
         {
             Connection db = new Connection();
@@ -95,6 +102,81 @@ namespace GestiuneaSalilor
 
         }
 
+        // selectez o sala dupa id
+        public DataRow SelectSalaById()
+        {
+            Connection db = new Connection();
+
+            Dictionary<string, string> parameters2 = new Dictionary<string, string>();
+            parameters2.Add("@ID_S", sv.getID_SALA().ToString());
+
+            return db.Select("SelID_S", true, parameters2).AsEnumerable().First();
+
+
+        }
+
+            // selectez toate salile
+        public DataTable SelectSala()
+        {
+
+            Connection db = new Connection();
+
+
+
+            string sqlQuery = "SELECT * FROM Sala";
+
+            return db.Select(sqlQuery, false);
+
+        }
+
+         // modific informatii despre o sala, inclusiv despre inventarul acesteia 
+        public bool UpdateSali()
+        {
+            Connection db = new Connection();
+
+
+            Dictionary<string, string> parameters2 = new Dictionary<string, string>();
+            parameters2.Add("@ID_S", sv.getID_SALA().ToString());
+            parameters2.Add("@Nume_Sala", sv.getNumeS());
+            parameters2.Add("@Responsabil", sv.getResp());
+            parameters2.Add("@Numar_Scaune", inv.getScaune().ToString());
+            parameters2.Add("@Numar_Mese", inv.getMese().ToString());
+            parameters2.Add("@Numar_calculatoare", inv.getCalc().ToString());
+
+
+
+            return db.InsertUpdateDelete("UpdateSala", parameters2, true);
+
+
+        }
+
+        // sterg o sala,inclusiv informatiile din inventar referitoare la sala respectiva
+        public bool DeleteSalaa()
+        {
+
+            Connection db = new Connection();
+
+            Dictionary<string, string> parameters2 = new Dictionary<string, string>();
+            parameters2.Add("@ID_S", sv.getID_SALA().ToString());
+
+            return db.InsertUpdateDelete("DeleteSalaa", parameters2, true);
+
+        }
+
+        // salvez informatiile legate de inventarul unei sali
+        public Inventory2 SetInventory(int a, int b, int c, int d)
+        {
+            inv.setIDS(a);
+            inv.setScaune(b);
+            inv.setMese(c);
+            inv.setCalc(d);
+            return inv;
+        }
+      
+
+       
+
+      // inserez in inventarul unei sali
         public bool InsertInventar()
         {
             Connection db = new Connection();
@@ -111,34 +193,25 @@ namespace GestiuneaSalilor
 
         }
 
-        public DataTable SelectU()
-        {
+      
 
+        // selectez dupa id o intrare din tabela inventar_sala
+        public DataRow SelectInventarId()
+        {
             Connection db = new Connection();
 
+            Dictionary<string, string> parameters2 = new Dictionary<string, string>();
+            parameters2.Add("@ID_S", inv.getID().ToString());
+
+            return db.Select("SelInvID", true, parameters2).AsEnumerable().First();
 
 
-            string sqlQuery = "SELECT * FROM Users ";
+       }
 
-            return db.Select(sqlQuery, false);
-
-        }
-
-        public DataTable SelectSala()
-        {
-
-            Connection db = new Connection();
+       
 
 
-
-            string sqlQuery = "SELECT * FROM Sala";
-
-            return db.Select(sqlQuery, false);
-
-        }
-
-
-
+        // selectez toate informatiile din inventar_sala
         public DataTable SelectInventar()
         {
 
@@ -152,10 +225,10 @@ namespace GestiuneaSalilor
 
         }
 
+       
 
 
-
-
+      
 
     }
 }

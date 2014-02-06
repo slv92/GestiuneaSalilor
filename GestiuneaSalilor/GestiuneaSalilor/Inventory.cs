@@ -21,7 +21,8 @@ namespace GestiuneaSalilor
             dataGridView1.DataSource = bls.SelectInvt();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        
+        private void Inventory_Load(object sender, EventArgs e)
         {
 
         }

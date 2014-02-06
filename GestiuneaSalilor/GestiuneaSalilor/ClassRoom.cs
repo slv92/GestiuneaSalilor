@@ -13,6 +13,7 @@ namespace GestiuneaSalilor
     public partial class ClassRoom : Form
     {
         BusinessLayerClass bls = new BusinessLayerClass();
+        SaliValues sv = new SaliValues();
 
         public ClassRoom()
         {
@@ -31,11 +32,17 @@ namespace GestiuneaSalilor
                 button2.Visible = false;
 
             if (Program.LOG.ID == 1 || Program.LOG.ID == 2)
-
+            {
                 button3.Visible = true;
+                button4.Visible = true;
+                button5.Visible = true;
+            }
             else
+            {
+                button5.Visible = false;
+                button4.Visible = false;
                 button3.Visible = false;
-
+            }
         }
 
         private void ClassRoom_Load(object sender, EventArgs e)
@@ -43,6 +50,7 @@ namespace GestiuneaSalilor
 
         }
 
+        // deschid un nou form cu inventarul salilor
         private void button1_Click(object sender, EventArgs e)
         {
 
@@ -62,10 +70,9 @@ namespace GestiuneaSalilor
 
         }
 
+        // buton pentru inserarea unui nou utilizator (doar SuperAdmin poate adauga utilizatori ), un user obisnuit nu are nevoie de cont, dar el nu poate modifica datele in tabele
         private void button2_Click(object sender, EventArgs e)
         {
-
-
 
             using (NewAccount s = new NewAccount())
             {
@@ -106,6 +113,7 @@ namespace GestiuneaSalilor
 
         }
 
+        // insereaza o noua sala
         private void button3_Click(object sender, EventArgs e)
         {
 
@@ -136,13 +144,7 @@ namespace GestiuneaSalilor
                             }
                     }
 
-
-
-
-
                 }
-
-
 
 
             }
@@ -155,6 +157,52 @@ namespace GestiuneaSalilor
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
              
+        }
+
+        // modifica informatii despre o sala
+        private void button4_Click(object sender, EventArgs e)
+        {
+            using (AddClassRoom ad = new AddClassRoom())
+            {
+                   ad.Class = int.Parse(dataGridView1.CurrentRow.Cells["ID_S"].Value.ToString());
+                   if (ad.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                   {
+
+                       bls.SetSVal(ad.getID(), ad.getNume(), ad.getResp());
+                       bls.SetInv(ad.getID(), ad.getSc(), ad.getM(), ad.getC());
+
+                       if (bls.UpdateS())
+                       {
+                           FillDataGrid();
+                       }
+                       else
+                       {
+                           MessageBox.Show("Error during Updating",
+                              "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                       }
+                   }
+            }
+
+        }
+
+        // sterge o sala
+        private void button5_Click(object sender, EventArgs e)
+        {
+            int x = int.Parse(dataGridView1.CurrentRow.Cells["ID_S"].Value.ToString());
+            bls.SetSVal(x, null, null);
+
+            if (MessageBox.Show("Delete " + x + "?", "Delete ClassRoom?", MessageBoxButtons.YesNo,
+                  MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+                if (bls.DeleteS())
+                {
+                    FillDataGrid();
+
+                }
+                else
+                    MessageBox.Show("Error during Deleting",
+                      "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
         }
 
  
